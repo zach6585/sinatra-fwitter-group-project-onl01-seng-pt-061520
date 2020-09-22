@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   
-  get '/tweets' do
+  get '/tweets/:id' do
     # binding.pry
     if logged_in?
       @tweets = Tweet.all
@@ -12,6 +12,7 @@ class TweetsController < ApplicationController
   end 
   
   get 'tweets/:id/edit' do 
+    erb :'tweets/edit_tweet'
   end 
     
   
@@ -24,8 +25,7 @@ class TweetsController < ApplicationController
   end 
   
   get '/logout' do 
-    erb :"users/logout"
-    
+    redirect to 'users/logout'
   end 
   
 

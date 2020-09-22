@@ -38,14 +38,14 @@ class UsersController < ApplicationController
     # binding.pry
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
-		  redirect to '/tweets'
+		  redirect to "/tweets/#{user.id}"
 		else 
 		  @a = "Invalid credentials. Please try again."
 		  erb :'users/login'
 		end 
   end 
   
-  get '/logout' do 
+  get '/users/logout' do 
     session.clear 
     redirect to '/'
   end 
