@@ -4,6 +4,12 @@
 <%= user.username %>
 <br>
 <%= tweet.content %>
+<% if user == @user %>
+<a href= '/tweets/edit/<%= tweet.id %>'>Edit This Tweet</a>
 <br>
-
 <% end %>
+<% end %>
+
+<form action="/addition" method="POST">
+  <input type="submit" value="Create New">
+</form>
