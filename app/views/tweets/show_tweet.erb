@@ -7,9 +7,11 @@
 <% if user == @user %>
 <a href= '/tweets/edit/<%= tweet.id %>'>Edit This Tweet</a>
 <br>
+<a href='/tweets/delete/'
+<br>
 <% end %>
 <% end %>
 
 <form action="/addition" method="POST">
-  <input type="submit" value="Create New">
+  <input type="submit" value="Write a new Tweet" id="Submit" name="choice"/>
 </form>
