@@ -10,5 +10,14 @@ class TweetsController < ApplicationController
       erb :'users/login'
     end 
   end 
+  
+  get 'tweets/:id/edit'
+    
+  
+  get '/new' do 
+    erb :'tweets/new'
+  end 
+  
+  
 
 end
