@@ -11,13 +11,22 @@ class TweetsController < ApplicationController
     end 
   end 
   
-  get 'tweets/:id/edit'
+  get 'tweets/:id/edit' do 
+  end 
     
   
   get '/new' do 
     erb :'tweets/new'
   end 
   
+  get '/delete' do
+    erb :"tweets/delete"
+  end 
+  
+  get '/logout' do 
+    erb :"users/logout"
+    
+  end 
   
 
 end
