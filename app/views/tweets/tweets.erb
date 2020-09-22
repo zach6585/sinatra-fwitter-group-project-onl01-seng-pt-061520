@@ -1,3 +1,6 @@
 <!Doctype html>
 
-<% tweets.each do %> 
+<% tweets.each do |tweet| %> 
+<%= tweet.user.name %>
+<br>
+<%= tweet.content %>
