@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 		if user.save 
 		  redirect "/login"
 		else 
-		  redirect "/signup"
+		  erb :'users/create_user'
 		end 
   end 
   
