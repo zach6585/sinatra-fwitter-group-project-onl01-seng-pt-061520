@@ -7,15 +7,26 @@ class UsersController < ApplicationController
   post '/start' do 
     # binding.pry 
     if params[:choice] == "Login"
-      erb :login 
+      redirect to '/login'
     elsif params[:choice] == "Sign Up"
-      erb :create_user 
+      redirect to '/signup'
+      
     end 
   end 
 
-  post '/login' do 
+  get '/login' do 
+    erb :'users/login'
+  end 
+  
+  get '/signup' do
+    # binding.pry
+    erb :'users/create_user'
   end 
   
   post '/signup' do 
+    
   end 
+  
+  
 end
+
