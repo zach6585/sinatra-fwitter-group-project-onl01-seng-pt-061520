@@ -38,7 +38,21 @@ class UsersController < ApplicationController
     user = User.find_by(:username => params[:username])
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
+		  redirect to '/'
+		else 
+		  erb :'users/login'
+		end 
   end 
+  
+  helpers do
+		def logged_in?
+			!!session[:user_id]
+		end
+
+		def current_user
+			User.find(session[:user_id])
+		end
+	end
   
 end
 
