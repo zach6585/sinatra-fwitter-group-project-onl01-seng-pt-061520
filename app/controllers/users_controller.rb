@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   post '/signup' do 
     @a = "Invalid credentials. Please try again."
-    user = User.new(:username => params[:username], :password => params[:password])
+    user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
 		if user.save 
 		  redirect "/login"
 		else 
