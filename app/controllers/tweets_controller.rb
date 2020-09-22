@@ -1,11 +1,11 @@
 class TweetsController < ApplicationController
   
   get '/tweets' do
-    binding.pry
+    # binding.pry
     if logged_in?
       @tweets = Tweet.all
       @user = current_user
-      erb :'tweets/tweets'
+      erb :'tweets/show_tweet'
     else 
       erb :'users/login'
     end 
