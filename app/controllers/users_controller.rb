@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  get '/users' do 
+  get '/' do 
     erb :index
   end 
   
@@ -35,10 +35,11 @@ class UsersController < ApplicationController
   
   post '/login' do 
     @a = "Invalid credentials. Please try again."
+    binding.pry
     user = User.find_by(:username => params[:username])
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
-		  redirect to '/'
+		  redirect to '/tweets'
 		else 
 		  erb :'users/login'
 		end 
