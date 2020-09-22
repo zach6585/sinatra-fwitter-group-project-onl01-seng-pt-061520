@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   
-  get '/tweets' do 
+  get '/tweets:id' do 
     if logged_in?
       erb :'tweets/tweets'
     else 
