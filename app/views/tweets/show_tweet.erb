@@ -5,7 +5,7 @@
 <br>
 <%= tweet.content %>
 <% if user == @user %>
-<a href= '/tweets/:id/edit/<%= tweet.id %>'>Edit This Tweet</a>
+<a href= '/tweets/<%= tweet.id %>/edit/'>Edit This Tweet</a>
 <br>
 <a href='/tweets/delete/<%= tweet.id %>'>Delete This Tweet</a>
 <br>

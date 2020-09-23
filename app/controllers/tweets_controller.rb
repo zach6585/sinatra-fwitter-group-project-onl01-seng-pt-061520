@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     end 
   end 
   
-  get 'tweets/:id/edit' do 
+  get '/tweets/:id/edit' do 
     erb :'tweets/edit_tweet'
   end 
     
@@ -20,7 +20,8 @@ class TweetsController < ApplicationController
     erb :'tweets/new'
   end 
   
-  get '/delete' do
+  get '/delete/:id' do
+    @tweet = Tweet.find_by_id(params[:id])
     erb :"tweets/delete"
   end 
   
@@ -28,7 +29,9 @@ class TweetsController < ApplicationController
     redirect to 'users/logout'
   end 
   
-  delete '/' do 
+  delete '/tweets/:id' do 
+    @tweet = Tweet.find_by_id(params[:id])
+    @tweet.delete 
   end 
   
 
