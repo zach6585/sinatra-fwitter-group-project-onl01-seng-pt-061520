@@ -28,5 +28,8 @@ class TweetsController < ApplicationController
     redirect to 'users/logout'
   end 
   
+  delete '/' do 
+  end 
+  
 
 end
