@@ -21,6 +21,7 @@ class TweetsController < ApplicationController
   end 
   
   get '/delete/:id' do
+    binding.pry
     @tweet = Tweet.find_by_id(params[:id])
     erb :"tweets/delete"
   end 
@@ -29,9 +30,15 @@ class TweetsController < ApplicationController
     redirect to 'users/logout'
   end 
   
+  get '/deleted' do 
+    @user = current_user
+    erb :deleted
+  end
+  
   delete '/tweets/:id' do 
     @tweet = Tweet.find_by_id(params[:id])
     @tweet.delete 
+    redirect to '/deleted'
   end 
   
 

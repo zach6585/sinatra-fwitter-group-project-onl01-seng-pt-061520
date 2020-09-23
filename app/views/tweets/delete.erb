@@ -1,3 +1,8 @@
+<!Doctype html>
+
+<h1>Are you sure?</h1>
 <form action="/delete/<%= @tweet.id %>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" id="Submit" value="Yes, delete post" name="choice1">
+  <input type="submit" id="Submit1" value="No, take me back">
 </form>
