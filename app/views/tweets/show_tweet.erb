@@ -2,7 +2,7 @@
 <% @tweets.each do |tweet| %> 
 <% user = User.find(tweet.user_id) %>
 <%= user.username %>
-<br>
+<br><br>
 <%= tweet.content %>
 <% if user == @user %>
 <a href= '/tweets/<%= tweet.id %>/edit/'>Edit This Tweet</a>
