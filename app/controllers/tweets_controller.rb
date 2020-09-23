@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
     if logged_in?
       @tweets = Tweet.all
       @user = current_user
+      @users = User.all
       erb :'tweets/show_tweet'
     else 
       erb :'users/login'
