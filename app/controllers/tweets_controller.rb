@@ -24,6 +24,7 @@ class TweetsController < ApplicationController
       @tweet.save 
       redirect to "/tweets"
     else 
+      erb :'tweets/edit_tweet'
     end 
 
   end 
@@ -38,7 +39,8 @@ class TweetsController < ApplicationController
 
   get '/delete/:id' do
     # binding.pry
-    @tweet = Tweet.find_by_id(params[:id])
+    erb :'tweets/delete'
+  end 
 
   delete '/tweets/:id' do 
     # binding.pry
@@ -46,3 +48,10 @@ class TweetsController < ApplicationController
     if params[:choice] == "No, take me back"
       redirect to '/tweets/:id'
     else 
+      @tweet = Tweet.find_by_id(params[:id])
+      @tweet.delete 
+      redirect to '/deleted'
+    end 
+  end 
+  
+end
