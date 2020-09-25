@@ -1,5 +1,7 @@
 <!Doctype html> 
 <% a = @tweet.content %>
-<form action="">
-  <input type="textarea" value="<%= a %>" />
-</form>>
+<form action="/tweets/<%= @tweet.id %>/" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+  <input type="textarea" value="<%= a %>" name="content">
+  <input type="submit" value="Submit" id="Submit">
+</form>
