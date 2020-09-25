@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 		if user.save 
 		  redirect "/login"
 		else 
-		  @a = "Invalid credentials. Please try again."
+		  @a = ["Invalid credentials. Please try again."]
 		  erb :'users/create_user'
 		end 
   end 
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
     # binding.pry
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
-		  redirect to "/tweets"
+		  redirect to '/tweets'
 		else 
-		  @a = "Invalid credentials. Please try again."
+		  @a = ["Invalid credentials. Please try again."]
 		  erb :'users/login'
 		end 
   end 

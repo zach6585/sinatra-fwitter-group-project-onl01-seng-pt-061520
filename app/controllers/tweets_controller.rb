@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
     end 
   end 
 
+
   get '/tweets/:id/edit' do 
     # binding.pry
     @tweet = Tweet.find_by_id(params[:id])

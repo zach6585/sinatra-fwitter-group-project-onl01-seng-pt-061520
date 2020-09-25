@@ -1,7 +1,7 @@
 <!Doctype html>
 <% @tweets.each do |tweet| %> 
 <% user = User.find(tweet.user_id) %>
-<%= "#{user.username}:" %>
+<%= "#{user.username}: " %>
 <%= tweet.content %>
 <br><br>
 
