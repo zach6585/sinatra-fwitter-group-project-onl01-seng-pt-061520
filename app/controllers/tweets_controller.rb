@@ -1,56 +1,48 @@
-class UsersController < ApplicationController
+class TweetsController < ApplicationController
 
-  get '/' do 
-    erb :index
-  end 
-  
-  post '/start' do 
-    # binding.pry 
-    if params[:choice] == "Login"
-      redirect to '/login'
-    elsif params[:choice] == "Sign Up"
-      redirect to '/signup'
-      
+  get '/tweets' do
+    # binding.pry
+    if logged_in?
+      @tweets = Tweet.all
+
     end 
   end 
 
-  get '/login' do 
-    erb :'users/login'
-  end 
-  
-  get '/signup' do
+  get '/tweets/:id/edit' do 
     # binding.pry
-    erb :'users/create_user'
+    @tweet = Tweet.find_by_id(params[:id])
+    erb :'tweets/edit_tweet'
   end 
-  
-  post '/signup' do 
-    user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-		if user.save 
-		  redirect "/login"
-		else 
-		  @a = "Invalid credentials. Please try again."
-		  erb :'users/create_user'
-		end 
-  end 
-  
-  post '/login' do 
-    user = User.find_by(:username => params[:username])
-    # binding.pry
-		if user && user.authenticate(params[:password])
-		  session[:user_id] = user.id
-		  redirect to "/tweets"
-		else 
-		  @a = "Invalid credentials. Please try again."
-		  erb :'users/login'
-		end 
-  end 
-  
-  get '/users/logout' do 
-    session.clear 
-    redirect to '/'
-  end 
-  
-  
-  
-end
 
+  
+  patch '/tweets/:id/' do 
+    # binding.pry
+    @tweet = Tweet.find_by_id(params[:id])
+    if !params[:content].empty?
+
+      @tweet.content = params[:content] 
+      @tweet.save 
+      redirect to "/tweets"
+    else 
+    end 
+
+  end 
+
+
+  get '/new' do 
+    erb :'tweets/new'
+  end 
+
+  post '/new' do 
+  end 
+
+  get '/delete/:id' do
+    # binding.pry
+    @tweet = Tweet.find_by_id(params[:id])
+
+  delete '/tweets/:id' do 
+    # binding.pry
+
+    if params[:choice] == "No, take me back"
+      redirect to '/tweets/:id'
+    else 
