@@ -4,7 +4,11 @@ class TweetsController < ApplicationController
     # binding.pry
     if logged_in?
       @tweets = Tweet.all
-
+      @user = current_user
+      @users = User.all
+      erb :'tweets/show_tweet'
+    else 
+      erb :'users/login'
     end 
   end 
 
@@ -25,6 +29,7 @@ class TweetsController < ApplicationController
       @tweet.save 
       redirect to "/tweets"
     else 
+      @a = "Cannot accept empty tweets"
       erb :'tweets/edit_tweet'
     end 
 

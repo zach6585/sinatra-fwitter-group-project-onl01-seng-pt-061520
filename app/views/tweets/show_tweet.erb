@@ -3,7 +3,7 @@
 <% user = User.find(tweet.user_id) %>
 <%= "#{user.username}: " %>
 <%= tweet.content %>
-<br><br>
+
 
 
 <% if user.id == @user.id %>
@@ -11,9 +11,10 @@
 <br>
 <a href='/delete/<%= tweet.id %>'>Delete This Tweet</a>
 <br>
+<br><br>
 <% end %>
 <% end %>
-
+<br><br><br><br>
 <form action="tweets/new" method="GET">
   <input type="submit" value="Write a new Tweet" id="Submit" name="choice"/>
   
