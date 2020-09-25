@@ -1,5 +1,4 @@
 <!Doctype html>
-<!--<% binding.pry %>-->
 <% @tweets.each do |tweet| %> 
 <% user = User.find(tweet.user_id) %>
 <%= "#{user.username}:" %>
@@ -8,7 +7,7 @@
 
 
 <% if user.id == @user.id %>
-<a href= '/tweets/<%= tweet.id %>/edit/'>Edit This Tweet</a>
+<a href= "/tweets/<%= tweet.id %>/edit">Edit This Tweet</a>
 <br>
 <a href='/delete/<%= tweet.id %>'>Delete This Tweet</a>
 <br>
