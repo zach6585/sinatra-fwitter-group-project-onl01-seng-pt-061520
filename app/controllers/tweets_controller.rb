@@ -41,6 +41,8 @@ class TweetsController < ApplicationController
   end 
 
   post '/new' do 
+    @tweet = Tweet.create(:content => params[:content], :user_id => current_user.id)
+    redirect to '/tweets'
   end 
 
   get '/delete/:id' do
