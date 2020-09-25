@@ -11,13 +11,13 @@
 <br>
 <a href='/delete/<%= tweet.id %>'>Delete This Tweet</a>
 <br>
-<br><br>
+
 <% end %>
+<br><br><br>
 <% end %>
 <br><br><br><br>
-<form action="tweets/new" method="GET">
-  <input type="submit" value="Write a new Tweet" id="Submit" name="choice"/>
-  
+<form action="/new" method="post">
+  <input type="submit" value="Write a new Tweet" id="Submit">
 </form>
 <br><br><br><br>
 <a href="/logout">Logout?</a>
