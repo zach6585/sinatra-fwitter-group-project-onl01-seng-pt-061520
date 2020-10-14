@@ -29,10 +29,11 @@ class UsersController < ApplicationController
   
   post '/signup' do 
     user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
-		if user.save 
-		  redirect "/login"
+		if user.save && !params[:username].empty? && !params[:password].empty?
+		  session[:user_id] = user.id
+		  redirect "/tweets"
 		else 
-		  @a = ["Invalid credentials. Please try again."]
+		  @a = "Invalid credentials. Please try again."
 		  erb :'users/create_user'
 		end 
   end 
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 		end 
   end 
   
-  get '/users/logout' do 
+  get '/logout' do 
     session.clear 
     redirect to '/'
   end 

@@ -41,8 +41,13 @@ class TweetsController < ApplicationController
   end 
 
   post '/new' do 
-    @tweet = Tweet.create(:content => params[:content], :user_id => current_user.id)
-    redirect to '/tweets'
+    if !params[:content].empty?
+      @tweet = Tweet.create(:content => params[:content], :user_id => current_user.id)
+      redirect to '/tweets'
+    else 
+      @a = "Cannot accept empty tweets"
+      erb :'tweets/new'
+    end 
   end 
 
   get '/delete/:id' do
